@@ -7,7 +7,8 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "functions-framework --target=helloWorld",
+    "start": "node dist/main",
+    "startgcf": "functions-framework --target=helloWorld",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:gcf": "nest build && functions-framework --source=dist/gcf --target=api --signature-type=http",
