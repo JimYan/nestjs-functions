@@ -1,9 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { DemoService } from './demo.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly demoService: DemoService,
+  ) {}
 
   @Get()
   getHello(): string {
@@ -18,5 +22,15 @@ export class AppController {
   @Get('/test2')
   test2(): string {
     return 'test url2';
+  }
+
+  @Get('/test3')
+  async test3() {
+    const info = await this.demoService.DemoServiceStub.FindAccount({
+      source: '1',
+      id: 2,
+    }).toPromise();
+    console.log(info);
+    return info;
   }
 }
