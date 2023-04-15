@@ -14,4 +14,9 @@ export class AppController {
   test(): string {
     return 'test url';
   }
+
+  @Get('/test2')
+  test2(): string {
+    return 'test url2';
+  }
 }
