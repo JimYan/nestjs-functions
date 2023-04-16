@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
 import { AppService } from './app.service';
 import { DemoService } from './demo.service';
 
 @Controller()
 export class AppController {
+  private logger = new Logger('AppController');
   constructor(
     private readonly appService: AppService,
     private readonly demoService: DemoService,
@@ -30,7 +31,7 @@ export class AppController {
       source: '1',
       id: 2,
     }).toPromise();
-    console.log(info);
+    this.logger.log('account info:', info);
     return info;
   }
 }
